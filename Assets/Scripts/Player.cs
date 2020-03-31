@@ -105,6 +105,10 @@ public class Player : MonoBehaviour
         {
             Forge.Instance.DisplaySwitch();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
 

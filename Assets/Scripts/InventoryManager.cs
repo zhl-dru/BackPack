@@ -70,13 +70,19 @@ public class InventoryManager : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 position;
-
         if (isPickedItem)
         {
+            Vector2 position;
             //选中物品跟随鼠标
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null, out position);
             pickedItem.SetLocalPosition(position);
+        }
+        else if (isToolTipShow)
+        {
+            Vector2 position;
+            //控制提示面板跟随鼠标
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null, out position);
+            toolTip.SetLocalPosition(position + toolTipPosionOffset);
         }
 
         if (isPickedItem && Input.GetMouseButtonDown(0) && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1) == false)
